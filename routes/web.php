@@ -23,7 +23,10 @@ Route::get('/halo', function () {
     return 'Halo Dunia';
 });
 
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index'])->middleware('auth')->name('user');
+Route::get('/user/tambah', [UserController::class, 'tambah'])->middleware('auth')->name('user.tambah');
+Route::get('/user/lihat', [UserController::class, 'lihat'])->middleware('auth')->name('user.lihat');
+Route::get('/user/edit', [UserController::class, 'edit'])->middleware('auth')->name('user.edit');
 
 Route::get('/about', function () {
     return view('about');
